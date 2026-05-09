@@ -1,0 +1,35 @@
+[project]
+name = "lab11"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "boto3-stubs~=1.42.70",
+]
+
+[dependency-groups]
+deployment = [
+    "aws-sam-cli>=1.159.1",
+    "boto3>=1.42.70",
+    "joblib>=1.5.3",
+    "onnx>=1.21.0",
+    "sentence-transformers>=5.4.1",
+    "skl2onnx>=1.20.0",
+    "torch>=2.11.0",
+    "transformers==4.44.2",
+]
+inference = [
+    "awslambdaric>=4.0.0",
+    "fastapi>=0.136.1",
+    "mangum>=0.21.0",
+    "numpy>=2.4.4",
+    "onnxruntime>=1.26.0",
+    "pydantic>=2.12.5",
+    "tokenizers==0.19.1",
+    "uvicorn>=0.46.0",
+]
+integration = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.12",
+]
