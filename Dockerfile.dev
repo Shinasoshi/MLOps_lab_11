@@ -17,4 +17,5 @@ ENV PATH="/app/.venv/bin:$PATH"
 COPY sentiment_app ./sentiment_app
 COPY model ./model
 
-CMD ["uvicorn", "sentiment_app.app:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["python", "-m", "awslambdaric"]
+CMD ["sentiment_app.app.handler"]
