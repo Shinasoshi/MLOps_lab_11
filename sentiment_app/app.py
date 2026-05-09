@@ -64,7 +64,16 @@ class SentimentPredictor:
 
 app = FastAPI()
 
-predictor = SentimentPredictor()
+predictor: SentimentPredictor | None = None
+
+
+def get_predictor() -> SentimentPredictor:
+    global predictor
+
+    if predictor is None:
+        predictor = SentimentPredictor()
+
+    return predictor
 
 
 @app.get("/")
@@ -74,7 +83,8 @@ def root():
 
 @app.post("/predict")
 def predict(request: PredictRequest):
-    label = predictor.predict(request.text)
+    model = get_predictor()
+    label = model.predict(request.text)
 
     return {
         "text": request.text,
